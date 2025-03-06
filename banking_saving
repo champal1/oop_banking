@@ -1,0 +1,64 @@
+# This is the main class that will store the bankaccount
+class BankAccount:
+    def __init__(self):
+        # The starting balance is 4000, also it is private with __
+        self.__balance = 4000
+
+    def balance(self):
+        #This is to return the balance back since it is private
+        return self.__balance
+
+    def deposit(self, num1):
+        #We have to parameters, self and num1 (The number that will add to the balance)
+        #This is to add the balance amount and a number that the user will choose (num1)
+        #Also this will update the balance
+        self.__balance += num1
+        #This is to return the balance
+        return self.__balance
+
+    def withdraw(self, num2):
+        #We have paramters, self and num2 (number that will sub from the balance)
+        #This will sub the balance based on the num2 number by user
+        #Also this will update the balance
+        self.__balance -= num2
+        #This will return the balance after it is updating
+        return self.__balance
+
+    def check_balance(self):
+        #Print out statement with the updated balance
+        print(f"You have a total of {self.__balance} in the account")
+
+#This is the subclass of Bankaccount, it will inherit the methods from Bankaccount
+class SavingsAccount(BankAccount):
+    def __init__(self):
+        #have the private with the starting amount
+        self.__amount = 5000
+
+    def amount(self):
+        #to activatie the private you must return the amount to use it
+        return self.__amount
+
+    #Will update the withdraw for the savingsaccount subclass
+    def withdraw(self, num2):
+        #if after subbing the total savings with the number by user and is below 100, send message
+        if self.__amount - num2 < 100:
+            print("You must have at least 100 in the saving")
+        # if it does not hit limit, sub total amount with user number
+        else:
+            #update the total amount
+            self.__amount -= num2
+            #Return total amount
+            return self.__amount
+    #Since we will use the same method as bankaccount, use pass, no need to change anything
+    def depost(self):
+        pass
+    #print out total updated amount
+    def check_balance(self):
+        print(f"You have a total of {self.__amount} in the savings")
+
+
+#store Bankaccount to variable
+acc = BankAccount()
+#Store savingsaccount to variable
+save = SavingsAccount()
+#print and use the method of the class or subclass so variable.method(number, not needed if no number is needed)
